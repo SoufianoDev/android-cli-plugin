@@ -1,13 +1,10 @@
 # Contributing to the Android CLI plugin
 
-Thank you for your interest in the Android CLI plugin!
+We do not accept external pull requests or code contributions to this repository.
 
-At this time, we are not accepting external pull requests or code contributions to this repository.
+## Feedback and bug reports for Android CLI itself**: 
 
-## Feedback and bug reports
-
-- **The plugin** (installing it, or how it works in your agent): open an issue in this repository.
-- **Android CLI itself**: see the [official Android CLI documentation](https://developer.android.com/tools/agents/android-cli) for support and issue reporting channels.
+See the [official Android CLI documentation](https://developer.android.com/tools/agents/android-cli) for support and issue reporting channels.
 
 ## Community guidelines
 

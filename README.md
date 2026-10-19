@@ -19,7 +19,6 @@ This repository holds the plugin only. It does not contain Android CLI itself.
 codex plugin marketplace add android/android-cli-plugin
 codex plugin add android-cli@android-cli-plugin
 ```
-Then open the Codex desktop app, go to the Plugins Directory, choose the **Android CLI plugin** marketplace and install **android-cli**.
 
 ## What's in the plugin
 

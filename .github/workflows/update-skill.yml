@@ -1,0 +1,91 @@
+name: Update Skill
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+          token: ${{ secrets.ADR_GITHUB_BOT_PAT }}
+
+      - name: Update android-cli skill from dac_skills.zip
+        run: |
+          SKILL_DSTS=(
+            plugins/android-cli/skills/android-cli
+            codex-public-marketplace-submission/skills/android-cli
+          )
+          curl -L -O https://dl.google.com/dac/dac_skills.zip
+          mkdir temp_extract
+          unzip -o dac_skills.zip -d temp_extract
+          # Fail loudly if the skill moves inside the zip
+          test -d temp_extract/devtools/android-cli
+          for SKILL_DST in "${SKILL_DSTS[@]}"; do
+            LICENSE_TMP=$(mktemp)
+            # LICENSE.txt is maintained in this repository, not in dac_skills.zip.
+            # Preserve an existing copy; seed a missing one from the repository license.
+            if [ -f "$SKILL_DST/LICENSE.txt" ]; then
+              cp "$SKILL_DST/LICENSE.txt" "$LICENSE_TMP"
+            else
+              cp LICENSE "$LICENSE_TMP"
+            fi
+            rm -rf "$SKILL_DST"
+            mkdir -p "$SKILL_DST"
+            cp -r temp_extract/devtools/android-cli/. "$SKILL_DST/"
+            cp "$LICENSE_TMP" "$SKILL_DST/LICENSE.txt"
+            rm -f "$LICENSE_TMP"
+          done
+          rm -rf temp_extract dac_skills.zip
+
+      - name: Bump plugin version if the skill changed
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Skill unchanged — no version bump."
+            exit 0
+          fi
+          # Claude Code only delivers an update when the version goes up
+          python3 - <<'PY'
+          import json, pathlib
+          claude = pathlib.Path('plugins/android-cli/.claude-plugin/plugin.json')
+          codex = pathlib.Path('plugins/android-cli/.codex-plugin/plugin.json')
+          public = pathlib.Path('codex-public-marketplace-submission/plugin.json')
+          d = json.loads(claude.read_text())
+          major, minor, patch = d['version'].split('.')
+          new = f"{major}.{minor}.{int(patch) + 1}"
+          # Keep every packaged version in sync.
+          for p in (claude, codex, public):
+              m = json.loads(p.read_text())
+              m['version'] = new
+              p.write_text(json.dumps(m, indent=2) + '\n')
+          print(f"Version bumped to {new}")
+          PY
+
+      - name: Commit and push to PR branch
+        env:
+          GH_TOKEN: ${{ secrets.ADR_GITHUB_BOT_PAT }}
+        run: |
+          BRANCH="update-skill/$(date +'%Y-%m-%d-%H%M')"
+          git config user.name "android-devrel-github-bot"
+          git config user.email "android-devrel-github-bot@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit — skipping PR creation."
+            exit 0
+          fi
+          git commit -m "Update android-cli skill ($(date +'%Y-%m-%d %H:%M'))"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "Update android-cli skill ($(date +'%Y-%m-%d %H:%M'))" \
+            --body "Automated update from the \`Update Skill\` workflow. Merging publishes a new plugin version." \
+            --base main \
+            --head "$BRANCH"

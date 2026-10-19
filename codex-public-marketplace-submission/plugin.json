@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "android-cli",
+  "version": "1.0.0",
+  "description": "Use the Android CLI to create Android projects, run apps on devices and emulators, manage the Android SDK, and search official Android documentation.",
+  "author": {
+    "name": "Google / Android",
+    "url": "https://github.com/android"
+  },
+  "homepage": "https://developer.android.com/tools/agents/android-cli",
+  "repository": "https://github.com/android/android-cli-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "android",
+    "cli",
+    "kotlin",
+    "emulator",
+    "sdk"
+  ],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Android CLI",
+        "shortDescription": "Build Android apps with AI",
+        "longDescription": "Use Android CLI to create Android projects, run apps on devices and emulators, manage the Android SDK, and search official Android documentation.",
+        "developerName": "Google / Android",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Android development",
+          "Local execution"
+        ],
+        "composerIcon": "./assets/composer-icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "android-cli-plugin",
+  "description": "Google's official Android CLI plugin for AI coding agents.",
+  "owner": {
+    "name": "Google / Android",
+    "url": "https://github.com/android"
+  },
+  "plugins": [
+    {
+      "name": "android-cli",
+      "source": "./plugins/android-cli",
+      "description": "Use the Android CLI to create, build, run and test Android apps."
+    }
+  ]
+}

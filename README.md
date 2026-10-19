@@ -1,14 +1,43 @@
-# Android CLI
-Android CLI (`android`) is a command-line interface that enables developers and AI coding agents to more easily and efficiently build, test, and manage Android projects from the terminal using any tool of their choice.
-## Features
-- **Project Creation & Setup (`create`, `init`):** Quickly scaffold and initialize Android projects.
-- **SDK & Emulator Management (`sdk`, `emulator`, `device`):** Install Android SDK packages, manage virtual devices, and connect to physical or remote devices.
-- **Agent Skills & Documentation (`skills`, `docs`):** Install and manage [Android Skills](https://github.com/android/skills) and search or fetch official Android developer documentation directly for AI agents.
-- **Android Studio Integration (`studio`, `run`, `layout`, `screen`):** Build and run apps, inspect layouts, capture screenshots, and interact with Android Studio from the command line.
-## Documentation
-For installation instructions, quickstarts, and the full command reference, see the official documentation:
-- **[Android CLI Overview](https://developer.android.com/tools/agents/android-cli)**
-- **[Download & Install Android CLI](https://developer.android.com/tools/agents/android-cli/download)**
-- **[Command Reference](https://developer.android.com/tools/agents/android-cli/commands)**
+# Android CLI plugin
+
+The official agent plugin for [Android CLI](https://developer.android.com/tools/agents/android-cli) (`android`).
+
+It gives AI coding agents the `android-cli` skill, which teaches them to use Android CLI to create projects, run apps on devices and emulators, manage the Android SDK, look up official Android documentation, and install more [Android skills](https://github.com/android/skills).
+
+This repository holds the plugin only. It does not contain Android CLI itself.
+
+## Install
+
+**Claude Code**
+```
+/plugin marketplace add android/android-cli-plugin
+/plugin install android-cli@android-cli-plugin
+```
+
+**Codex**
+```
+codex plugin marketplace add android/android-cli-plugin
+codex plugin add android-cli@android-cli-plugin
+```
+Then open the Codex desktop app, go to the Plugins Directory, choose the **Android CLI plugin** marketplace and install **android-cli**.
+
+## What's in the plugin
+
+| Path | What it is |
+| --- | --- |
+| `plugins/android-cli/` | The plugin |
+| `plugins/android-cli/skills/android-cli/` | The `android-cli` skill |
+| `plugins/android-cli/.claude-plugin/plugin.json` | Claude manifest |
+| `plugins/android-cli/.codex-plugin/plugin.json` | Codex manifest |
+| `.claude-plugin/marketplace.json` | Claude Code marketplace catalogue |
+| `.agents/plugins/marketplace.json` | Codex marketplace catalogue |
+
+## Android CLI documentation
+
+- [Android CLI overview](https://developer.android.com/tools/agents/android-cli)
+- [Download & install](https://developer.android.com/tools/agents/android-cli/download)
+- [Command reference](https://developer.android.com/tools/agents/android-cli/commands)
+
 ## License
+
 Copyright 2026 Google LLC. Licensed under the [Apache 2.0 License](LICENSE).

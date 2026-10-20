@@ -1,8 +1,10 @@
 # Android CLI plugin
 
-The official agent plugin for [Android CLI](https://developer.android.com/tools/agents/android-cli) (`android`).
+Build Android apps more efficiently with Android CLI.
 
-It gives AI coding agents the `android-cli` skill, which teaches them to use Android CLI to create projects, run apps on devices and emulators, manage the Android SDK, look up official Android documentation, and install more [Android skills](https://github.com/android/skills).
+Android CLI is a command-line interface for building Android apps more efficiently. Using Android CLI together with any AI tool of your choice, you can create Android projects, run apps, manage the SDK and virtual devices, inspect live device screens and UI hierarchies, connect to Android Studio, test with Journeys, install Android skills, and search Android documentation.
+
+This plugin adds the `android-cli` skill, which teaches your agent to use [Android CLI](https://developer.android.com/tools/agents/android-cli).
 
 This repository holds the plugin only. It does not contain Android CLI itself.
 
@@ -24,12 +26,12 @@ codex plugin add android-cli@android-cli-plugin
 
 | Path | What it is |
 | --- | --- |
-| `plugins/android-cli/` | The plugin |
-| `plugins/android-cli/skills/android-cli/` | The `android-cli` skill |
-| `plugins/android-cli/.claude-plugin/plugin.json` | Claude manifest |
-| `plugins/android-cli/.codex-plugin/plugin.json` | Codex manifest |
+| `plugins/android-cli-claude/` | The plugin for Claude |
+| `plugins/android-cli-codex/` | The plugin for Codex |
+| `plugins/*/skills/android-cli/` | The `android-cli` skill (same in all three) |
 | `.claude-plugin/marketplace.json` | Claude Code marketplace catalogue |
 | `.agents/plugins/marketplace.json` | Codex marketplace catalogue |
+| `plugins/android-cli-codex-public/` | Package for OpenAI's public Plugins Directory |
 
 ## Android CLI documentation
 

@@ -20,8 +20,9 @@ jobs:
       - name: Update android-cli skill from dac_skills.zip
         run: |
           SKILL_DSTS=(
-            plugins/android-cli/skills/android-cli
-            codex-public-marketplace-submission/skills/android-cli
+            plugins/android-cli-claude/skills/android-cli
+            plugins/android-cli-codex/skills/android-cli
+            plugins/android-cli-codex-public/skills/android-cli
           )
           curl -L -O https://dl.google.com/dac/dac_skills.zip
           mkdir temp_extract
@@ -55,9 +56,9 @@ jobs:
           # Claude Code only delivers an update when the version goes up
           python3 - <<'PY'
           import json, pathlib
-          claude = pathlib.Path('plugins/android-cli/.claude-plugin/plugin.json')
-          codex = pathlib.Path('plugins/android-cli/.codex-plugin/plugin.json')
-          public = pathlib.Path('codex-public-marketplace-submission/plugin.json')
+          claude = pathlib.Path('plugins/android-cli-claude/.claude-plugin/plugin.json')
+          codex = pathlib.Path('plugins/android-cli-codex/.codex-plugin/plugin.json')
+          public = pathlib.Path('plugins/android-cli-codex-public/plugin.json')
           d = json.loads(claude.read_text())
           major, minor, patch = d['version'].split('.')
           new = f"{major}.{minor}.{int(patch) + 1}"

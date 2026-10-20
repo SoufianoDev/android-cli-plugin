@@ -8,7 +8,7 @@
       "name": "android-cli",
       "source": {
         "source": "local",
-        "path": "./plugins/android-cli"
+        "path": "./plugins/android-cli-codex"
       },
       "policy": {
         "installation": "AVAILABLE",

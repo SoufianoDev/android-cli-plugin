@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "android-cli",
   "version": "1.0.0",
-  "description": "Use the Android CLI to create Android projects, run apps on devices and emulators, manage the Android SDK, and search official Android documentation.",
+  "description": "Build Android apps more efficiently with Android CLI.",
   "author": {
     "name": "Google / Android",
     "url": "https://github.com/android"
@@ -22,8 +22,8 @@
       "requires_local_executor": true,
       "interface": {
         "displayName": "Android CLI",
-        "shortDescription": "Build Android apps with AI",
-        "longDescription": "Use Android CLI to create Android projects, run apps on devices and emulators, manage the Android SDK, and search official Android documentation.",
+        "shortDescription": "Build Android apps more efficiently with Android CLI.",
+        "longDescription": "Android CLI is a command-line interface for building Android apps more efficiently. Using Android CLI together with any AI tool of your choice, you can create Android projects, run apps, manage the SDK and virtual devices, inspect live device screens and UI hierarchies, connect to Android Studio, test with Journeys, install Android skills, and search Android documentation.",
         "developerName": "Google / Android",
         "category": "Developer Tools",
         "capabilities": [

@@ -2,6 +2,11 @@ name: Update Skill
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Plugin version for this release (e.g. 1.0.16625370)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -46,28 +51,29 @@ jobs:
           done
           rm -rf temp_extract dac_skills.zip
 
-      - name: Bump plugin version if the skill changed
+      - name: Set plugin version
+        env:
+          VERSION: ${{ inputs.version }}
         run: |
-          git add -A
-          if git diff --cached --quiet; then
-            echo "Skill unchanged — no version bump."
-            exit 0
+          # Claude Code only delivers an update when the version changes
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Version must look like 1.0.16625370, got: $VERSION"
+            exit 1
           fi
-          # Claude Code only delivers an update when the version goes up
           python3 - <<'PY'
-          import json, pathlib
-          claude = pathlib.Path('plugins/android-cli-claude/.claude-plugin/plugin.json')
-          codex = pathlib.Path('plugins/android-cli-codex/.codex-plugin/plugin.json')
-          public = pathlib.Path('plugins/android-cli-codex-public/plugin.json')
-          d = json.loads(claude.read_text())
-          major, minor, patch = d['version'].split('.')
-          new = f"{major}.{minor}.{int(patch) + 1}"
+          import json, os, pathlib
+          version = os.environ['VERSION']
           # Keep every packaged version in sync.
-          for p in (claude, codex, public):
+          for path in (
+              'plugins/android-cli-claude/.claude-plugin/plugin.json',
+              'plugins/android-cli-codex/.codex-plugin/plugin.json',
+              'plugins/android-cli-codex-public/plugin.json',
+          ):
+              p = pathlib.Path(path)
               m = json.loads(p.read_text())
-              m['version'] = new
-              p.write_text(json.dumps(m, indent=2) + '\n')
-          print(f"Version bumped to {new}")
+              m['version'] = version
+              p.write_text(json.dumps(m, indent=2, ensure_ascii=False) + '\n')
+          print(f"Version set to {version}")
           PY
 
       - name: Commit and push to PR branch

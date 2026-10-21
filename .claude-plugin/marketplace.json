@@ -1,6 +1,6 @@
 {
   "name": "android-cli-plugin",
-  "description": "Build Android apps more efficiently with Android CLI.",
+  "description": "Core tools and knowledge required to develop for Android.",
   "owner": {
     "name": "Google / Android",
     "url": "https://github.com/android"
@@ -9,7 +9,7 @@
     {
       "name": "android-cli",
       "source": "./plugins/android-cli-claude",
-      "description": "Build Android apps more efficiently with Android CLI."
+      "description": "Core tools and knowledge required to develop for Android."
     }
   ]
 }

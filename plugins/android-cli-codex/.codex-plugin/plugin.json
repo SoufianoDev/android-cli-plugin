@@ -1,9 +1,9 @@
 {
   "name": "android-cli",
-  "version": "1.0.0",
-  "description": "Build Android apps more efficiently with Android CLI.",
+  "version": "1.0.16625370",
+  "description": "Core tools and knowledge required to develop for Android.",
   "author": {
-    "name": "Google / Android",
+    "name": "Android Developer Tools Team",
     "url": "https://github.com/android"
   },
   "homepage": "https://developer.android.com/tools/agents/android-cli",
@@ -11,17 +11,20 @@
   "license": "Apache-2.0",
   "keywords": [
     "android",
-    "cli",
-    "kotlin",
+    "mobile",
+    "device",
+    "sdk",
     "emulator",
-    "sdk"
+    "studio",
+    "cli",
+    "journeys"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Android CLI",
-    "shortDescription": "Build Android apps more efficiently with Android CLI.",
-    "longDescription": "Android CLI is a command-line interface for building Android apps more efficiently. Using Android CLI together with any AI tool of your choice, you can create Android projects, run apps, manage the SDK and virtual devices, inspect live device screens and UI hierarchies, connect to Android Studio, test with Journeys, install Android skills, and search Android documentation.",
-    "developerName": "Google / Android",
+    "shortDescription": "Core tools and knowledge required to develop for Android.",
+    "longDescription": "Android CLI is the official command-line interface that standardizes core Android development competencies for agent-first workflows. It gives coding agents and developers an entry point to the official tools, skills, and documentation needed to build for Android efficiently.",
+    "developerName": "Android Developer Tools Team",
     "category": "Developer Tools",
     "capabilities": [],
     "websiteURL": "https://developer.android.com/tools/agents/android-cli",

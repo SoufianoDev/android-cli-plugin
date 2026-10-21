@@ -1,10 +1,10 @@
 {
   "name": "android-cli",
-  "version": "1.0.0",
+  "version": "1.0.16625370",
   "displayName": "Android CLI",
-  "description": "Build Android apps more efficiently with Android CLI.",
+  "description": "Core tools and knowledge required to develop for Android.",
   "author": {
-    "name": "Google / Android",
+    "name": "Android Developer Tools Team",
     "url": "https://github.com/android"
   },
   "homepage": "https://developer.android.com/tools/agents/android-cli",
@@ -12,9 +12,12 @@
   "license": "Apache-2.0",
   "keywords": [
     "android",
-    "cli",
-    "kotlin",
+    "mobile",
+    "device",
+    "sdk",
     "emulator",
-    "sdk"
+    "studio",
+    "cli",
+    "journeys"
   ]
 }

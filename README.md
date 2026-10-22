@@ -10,6 +10,16 @@ This repository holds the plugin only. It does not contain Android CLI itself.
 
 ## Install
 
+**Antigravity (from Antigravity CLI)**
+```
+/plugin install android-cli-plugin@antigravity-plugins-official
+```
+
+**Antigravity (from terminal)**
+```
+agy plugin install android-cli-plugin@antigravity-plugins-official
+```
+
 **Claude (from Claude Code)**
 ```
 /plugin marketplace add android/android-cli-plugin

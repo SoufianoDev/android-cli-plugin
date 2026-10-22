@@ -15,6 +15,7 @@ This repository holds the plugin only. It does not contain Android CLI itself.
 /plugin marketplace add android/android-cli-plugin
 /plugin install android-cli@android-cli-plugin
 ```
+
 **Claude (from terminal)**
 ```
 claude plugin marketplace add android/android-cli-plugin

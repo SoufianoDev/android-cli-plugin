@@ -38,10 +38,12 @@ codex plugin marketplace add android/android-cli-plugin
 codex plugin add android-cli@android-cli-plugin
 ```
 
-**OpenCode V2 (from terminal)**
+**OpenCode V2 (from terminal, TUI and Desktop)**
 ```
 opencode plugin add 'github:android/android-cli-plugin#main::path:plugins/android-cli-opencode'
 ```
+
+The install is global, so the same command covers the OpenCode Desktop app: the skill is registered server-side and is available in every session, and the plugin is listed under **Settings > Extensions > Plugins**.
 
 ## What's in the plugin
 

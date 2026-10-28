@@ -38,13 +38,19 @@ codex plugin marketplace add android/android-cli-plugin
 codex plugin add android-cli@android-cli-plugin
 ```
 
+**OpenCode (from terminal)**
+```
+opencode plugin add 'github:android/android-cli-plugin#main::path:plugins/android-cli-opencode'
+```
+
 ## What's in the plugin
 
 | Path | What it is |
 | --- | --- |
 | `plugins/android-cli-claude/` | The plugin for Claude |
 | `plugins/android-cli-codex/` | The plugin for Codex |
-| `plugins/*/skills/android-cli/` | The `android-cli` skill (same in all three) |
+| `plugins/android-cli-opencode/` | The plugin for OpenCode |
+| `plugins/*/skills/android-cli/` | The `android-cli` skill (same in all four) |
 | `.claude-plugin/marketplace.json` | Claude Code marketplace catalogue |
 | `.agents/plugins/marketplace.json` | Codex marketplace catalogue |
 | `plugins/android-cli-codex-public/` | Package for OpenAI's public Plugins Directory |

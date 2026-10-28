@@ -1,0 +1,17 @@
+{
+  "name": "android-cli",
+  "version": "1.0.16625370",
+  "description": "Core tools and knowledge required to develop for Android.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "index.ts",
+    "skills"
+  ],
+  "dependencies": {
+    "@opencode/plugin": "2.1.2"
+  }
+}

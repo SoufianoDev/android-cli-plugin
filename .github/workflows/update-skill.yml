@@ -28,6 +28,7 @@ jobs:
             plugins/android-cli-claude/skills/android-cli
             plugins/android-cli-codex/skills/android-cli
             plugins/android-cli-codex-public/skills/android-cli
+            plugins/android-cli-opencode/skills/android-cli
           )
           curl -L -O https://dl.google.com/dac/dac_skills.zip
           mkdir temp_extract
@@ -68,6 +69,7 @@ jobs:
               'plugins/android-cli-claude/.claude-plugin/plugin.json',
               'plugins/android-cli-codex/.codex-plugin/plugin.json',
               'plugins/android-cli-codex-public/plugin.json',
+              'plugins/android-cli-opencode/package.json',
           ):
               p = pathlib.Path(path)
               m = json.loads(p.read_text())

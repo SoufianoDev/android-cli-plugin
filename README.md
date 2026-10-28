@@ -38,7 +38,7 @@ codex plugin marketplace add android/android-cli-plugin
 codex plugin add android-cli@android-cli-plugin
 ```
 
-**OpenCode (from terminal)**
+**OpenCode V2 (from terminal)**
 ```
 opencode plugin add 'github:android/android-cli-plugin#main::path:plugins/android-cli-opencode'
 ```

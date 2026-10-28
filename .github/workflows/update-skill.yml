@@ -47,6 +47,9 @@ jobs:
             rm -rf "$SKILL_DST"
             mkdir -p "$SKILL_DST"
             cp -r temp_extract/devtools/android-cli/. "$SKILL_DST/"
+            # The zip escapes shell operators (\|, \&\&) for Markdown; agents copy
+            # commands verbatim, so unescape them in the install lines.
+            sed -i -E 's/\\\|/|/g; s/\\&\\&/\&\&/g' "$SKILL_DST/SKILL.md"
             cp "$LICENSE_TMP" "$SKILL_DST/LICENSE.txt"
             rm -f "$LICENSE_TMP"
           done

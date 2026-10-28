@@ -42,7 +42,7 @@ This plugin adds the `android-cli` skill, which teaches your agent to use Androi
 
 **Codex**
 ```
-codex plugin marketplace add android/android-cli-plugin
+codex plugin marketplace add SoufianoDev/android-cli-plugin
 codex plugin add android-cli@android-cli-plugin
 ```
 

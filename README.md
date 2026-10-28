@@ -22,25 +22,25 @@ agy plugin install android-cli-plugin@antigravity-plugins-official
 
 **Claude (from Claude Code)**
 ```
-/plugin marketplace add android/android-cli-plugin
+/plugin marketplace add SoufianoDev/android-cli-plugin
 /plugin install android-cli@android-cli-plugin
 ```
 
 **Claude (from terminal)**
 ```
-claude plugin marketplace add android/android-cli-plugin
+claude plugin marketplace add SoufianoDev/android-cli-plugin
 claude plugin install android-cli@android-cli-plugin
 ```
 
 **Codex (from terminal)**
 ```
-codex plugin marketplace add android/android-cli-plugin
+codex plugin marketplace add SoufianoDev/android-cli-plugin
 codex plugin add android-cli@android-cli-plugin
 ```
 
 **OpenCode V2 (from terminal, TUI and Desktop)**
 ```
-opencode plugin add 'github:android/android-cli-plugin#main::path:plugins/android-cli-opencode'
+opencode plugin add 'github:SoufianoDev/android-cli-plugin#main::path:plugins/android-cli-opencode'
 ```
 
 Requires OpenCode V2; update with `opencode upgrade`, or run `opencode upgrade --major` to migrate from V1.

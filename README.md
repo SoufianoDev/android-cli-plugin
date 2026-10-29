@@ -90,6 +90,7 @@ Keep both `SKILL.md` and `LICENSE.txt` with the skill. MiMo Code reads the `name
 | `plugins/android-cli-codex/` | The plugin for Codex |
 | `plugins/android-cli-opencode/` | The plugin for OpenCode |
 | `plugins/android-cli-mimocode/` | Optional MiMo Code TypeScript plugin and bundled Android CLI skill |
+| `scripts/sync-mimocode-skill.sh` | Copies the canonical Android CLI skill into the MiMo Code package |
 | `plugins/*/skills/android-cli/` | The `android-cli` skill bundled with each agent package; CI checks the MiMo copy against the canonical OpenCode copy |
 | `.claude-plugin/marketplace.json` | Claude Code marketplace catalogue |
 | `.agents/plugins/marketplace.json` | Codex marketplace catalogue |

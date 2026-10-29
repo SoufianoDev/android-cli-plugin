@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate skill packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Run repository checks
+        run: bash tests/mimocode_plugin_test.sh
+
+      - name: Install MiMo Code plugin dependencies
+        working-directory: plugins/android-cli-mimocode
+        run: bun install
+
+      - name: Smoke-test MiMo Code guide tool
+        working-directory: plugins/android-cli-mimocode
+        run: bun run ../../tests/mimocode_plugin_runtime_test.ts
+
+      - name: Type-check MiMo Code plugin
+        working-directory: plugins/android-cli-mimocode
+        run: bun run typecheck

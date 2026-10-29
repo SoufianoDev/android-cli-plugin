@@ -64,14 +64,22 @@ Keep the checkout at that path after installation. This external-checkout plugin
 
 #### Native MiMo Code skill (recommended for Desktop)
 
-MiMo Code natively discovers `SKILL.md` files in `~/.config/mimocode/skills/` and supported project directories such as `.agents/skills/`. This option does not require a TypeScript plugin.
+MiMo Code natively discovers `SKILL.md` files in its global config directory's `skills/` folder and supported project directories such as `.agents/skills/`. This option does not require a TypeScript plugin.
 
 If you have not cloned the repository already, run the `git clone` command above. Then install the skill globally:
 
 ```bash
-mkdir -p "$HOME/.config/mimocode/skills/android-cli"
-cp -R "$HOME/.local/share/android-cli-plugin/plugins/android-cli-mimocode/skills/android-cli/." "$HOME/.config/mimocode/skills/android-cli/"
+if [ -n "${MIMOCODE_HOME:-}" ]; then
+  mimocode_config_dir="$MIMOCODE_HOME/config"
+else
+  mimocode_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/mimocode"
+fi
+skill_dir="${MIMO_SKILL_DIR:-$mimocode_config_dir/skills/android-cli}"
+mkdir -p "$skill_dir"
+cp -R "$HOME/.local/share/android-cli-plugin/plugins/android-cli-mimocode/skills/android-cli/." "$skill_dir/"
 ```
+
+Run these commands with the same environment as MiMo Code. As described in its [configuration documentation](https://mimo.xiaomi.com/mimocode/config-overrides), `MIMOCODE_HOME` takes precedence over `XDG_CONFIG_HOME`; with neither set, the destination is `~/.config/mimocode/skills/android-cli/`. If the shell cannot determine the directory used by your MiMo Code installation (for example, Desktop uses a different environment), set `MIMO_SKILL_DIR` to the absolute destination, including `skills/android-cli`, before running the commands: `export MIMO_SKILL_DIR="/absolute/path/to/mimocode/config/skills/android-cli"`.
 
 For one project, run these commands from the project root instead:
 

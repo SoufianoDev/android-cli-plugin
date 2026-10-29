@@ -31,8 +31,14 @@ expect_file "tests/mimocode_plugin_runtime_test.ts"
 if command -v jq >/dev/null 2>&1; then
   jq -e '.name == "android-cli-mimocode" and .type == "module" and .main == "./index.ts" and .exports["./server"] == "./index.ts"' \
     plugins/android-cli-mimocode/package.json >/dev/null || fail "invalid MiMo Code plugin package metadata"
-  jq -e '.version == "1.0.16625370" and .license == "Apache-2.0" and .devDependencies["@mimo-ai/plugin"] == "0.1.16"' \
-    plugins/android-cli-mimocode/package.json >/dev/null || fail "MiMo package version, license, or SDK dependency is incorrect"
+  jq -se '.[0] as $mimo |
+    ($mimo | (.version | test("^[0-9]+\\.[0-9]+\\.[0-9]+$")) and .license == "Apache-2.0" and .devDependencies["@mimo-ai/plugin"] == "0.1.16") and
+    all(.[]; .version == $mimo.version)' \
+    plugins/android-cli-mimocode/package.json \
+    plugins/android-cli-claude/.claude-plugin/plugin.json \
+    plugins/android-cli-codex/.codex-plugin/plugin.json \
+    plugins/android-cli-codex-public/plugin.json \
+    plugins/android-cli-opencode/package.json >/dev/null || fail "MiMo package version, license, or SDK dependency is incorrect"
 else
   fail "jq is required to validate the MiMo Code plugin package manifest"
 fi

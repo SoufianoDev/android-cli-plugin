@@ -49,7 +49,7 @@ The install is global, so the same command covers the OpenCode Desktop app: the 
 
 ### Xiaomi MiMo Code
 
-The repository includes an optional TypeScript server plugin in `plugins/android-cli-mimocode/`. Its `android_cli_guide` tool loads the official Android CLI skill on demand, either in full or by focused section. The plugin does not install the `android` executable; install Android CLI separately using the [official instructions](https://developer.android.com/tools/agents/android-cli).
+The repository includes an optional TypeScript server plugin in `plugins/android-cli-mimocode/`. It uses MiMo Code's `@mimo-ai/plugin` SDK (not OpenCode's SDK) and exposes an `android_cli_guide` tool that loads the official Android CLI skill on demand, either in full or by focused section. See MiMo Code's official [Agent Skills](https://mimo.xiaomi.com/mimocode/skills) and [Custom Tools](https://mimo.xiaomi.com/mimocode/custom-tools) documentation. The plugin does not install the `android` executable; install Android CLI separately using the [official instructions](https://developer.android.com/tools/agents/android-cli).
 
 #### CLI/TUI plugin
 
